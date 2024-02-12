@@ -1,6 +1,30 @@
-<video controls width="640" height="360">
-  <source src="https://nktv.smartstream.video/smartstream-us/spondon/spondon/chunks.m3u8?nimblesessionid=5523095" type="application/x-mpegURL">
-  <!-- Fallback for browsers that do not support HLS -->
-  <source src="fallback_video.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HLS Video Player</title>
+</head>
+<body>
+  <video id="video" controls width="640" height="360"></video>
+
+  <script src="https://unpkg.com/hls.js@latest"></script>
+  <script>
+    var video = document.getElementById('video');
+    if(Hls.isSupported()) {
+      var hls = new Hls();
+      hls.loadSource('https://nktv.smartstream.video/smartstream-us/spondon/spondon/chunks.m3u8?nimblesessionid=5523095');
+      hls.attachMedia(video);
+      hls.on(Hls.Events.MANIFEST_PARSED,function() {
+        video.play();
+      });
+    }
+    else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+      video.src = 'https://nktv.smartstream.video/smartstream-us/spondon/spondon/chunks.m3u8?nimblesessionid=5523095';
+      video.addEventListener('loadedmetadata',function() {
+        video.play();
+      });
+    }
+  </script>
+</body>
+</html>
