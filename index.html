@@ -13,14 +13,14 @@
     var video = document.getElementById('video');
     if(Hls.isSupported()) {
       var hls = new Hls();
-      hls.loadSource('https://nktv.smartstream.video/smartstream-us/spondon/spondon/chunks.m3u8');
+      hls.loadSource('https://dai.google.com/linear/hls/event/dBdwOiGaQvy0TA1zOsjV6w/master.m3u8');
       hls.attachMedia(video);
       hls.on(Hls.Events.MANIFEST_PARSED,function() {
         video.play();
       });
     }
     else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-      video.src = 'https://nktv.smartstream.video/smartstream-us/spondon/spondon/chunks.m3u8';
+      video.src = 'https://dai.google.com/linear/hls/event/dBdwOiGaQvy0TA1zOsjV6w/master.m3u8';
       video.addEventListener('loadedmetadata',function() {
         video.play();
       });
