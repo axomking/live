@@ -1,20 +1,81 @@
-<iframe src="https://www.jiosaavn.com/embed/playlist/1224127175" width="250" height="360" frameborder="0" allowfullscreen></iframe>
-<iframe src="https://www.jiosaavn.com/embed/playlist/1224127175" width="250" height="360" frameborder="0" allowfullscreen></iframe>
-<iframe src="https://www.jiosaavn.com/embed/playlist/1224127175" width="250" height="360" frameborder="0" allowfullscreen></iframe>
-<iframe src="https://www.jiosaavn.com/embed/playlist/1224127175" width="250" height="360" frameborder="0" allowfullscreen></iframe>
-<iframe src="https://www.jiosaavn.com/embed/playlist/1224127175" width="250" height="360" frameborder="0" allowfullscreen></iframe>
-<iframe src="https://www.jiosaavn.com/embed/playlist/1224127175" width="250" height="360" frameborder="0" allowfullscreen></iframe>
-<iframe src="https://www.jiosaavn.com/embed/playlist/1224127175" width="250" height="360" frameborder="0" allowfullscreen></iframe>
-<iframe src="https://www.jiosaavn.com/embed/playlist/1224127175" width="250" height="360" frameborder="0" allowfullscreen></iframe>
-<iframe src="https://www.jiosaavn.com/embed/playlist/1224127175" width="250" height="360" frameborder="0" allowfullscreen></iframe>
-<iframe src="https://www.jiosaavn.com/embed/playlist/1224127175" width="250" height="360" frameborder="0" allowfullscreen></iframe>
-<iframe src="https://www.jiosaavn.com/embed/playlist/1224127175" width="250" height="360" frameborder="0" allowfullscreen></iframe>
-<iframe src="https://www.jiosaavn.com/embed/playlist/1224127175" width="250" height="360" frameborder="0" allowfullscreen></iframe>
-<iframe src="https://www.jiosaavn.com/embed/playlist/1224127175" width="250" height="360" frameborder="0" allowfullscreen></iframe>
-<iframe src="https://www.jiosaavn.com/embed/playlist/1224127175" width="250" height="360" frameborder="0" allowfullscreen></iframe>
-<iframe src="https://www.jiosaavn.com/embed/playlist/1224127175" width="250" height="360" frameborder="0" allowfullscreen></iframe>
-<iframe src="https://www.jiosaavn.com/embed/playlist/1224127175" width="250" height="360" frameborder="0" allowfullscreen></iframe>
-<iframe src="https://www.jiosaavn.com/embed/playlist/1224127175" width="250" height="360" frameborder="0" allowfullscreen></iframe>
-<iframe src="https://www.jiosaavn.com/embed/playlist/1224127175" width="250" height="360" frameborder="0" allowfullscreen></iframe>
-<iframe src="https://www.jiosaavn.com/embed/playlist/1224127175" width="250" height="360" frameborder="0" allowfullscreen></iframe>
-<iframe src="https://www.jiosaavn.com/embed/playlist/1224127175" width="250" height="360" frameborder="0" allowfullscreen></iframe>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ad-Free YouTube Player</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        iframe {
+            border: none;
+            width: 80%;
+            max-width: 800px;
+            height: 450px;
+            margin-top: 20px;
+        }
+        input {
+            padding: 10px;
+            width: 80%;
+            max-width: 600px;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Ad-Free YouTube Player</h1>
+    <form id="video-form">
+        <input type="text" id="youtube-url" placeholder="Paste YouTube link here" required>
+        <button type="submit">Play Video</button>
+    </form>
+
+    <iframe id="video-player" allowfullscreen></iframe>
+
+    <script>
+        const form = document.getElementById('video-form');
+        const input = document.getElementById('youtube-url');
+        const iframe = document.getElementById('video-player');
+
+        // Function to extract YouTube video ID
+        function getVideoId(url) {
+            const regex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:watch\?v=|embed\/|v\/|.+\?v=)|youtu\.be\/)([^&?/\s]+)/;
+            const matches = url.match(regex);
+            return matches ? matches[1] : null;
+        }
+
+        // Function to update the player with the given video ID
+        function updatePlayer(videoId) {
+            const invidiousInstance = 'https://inv.riverside.rocks'; // Choose a reliable Invidious instance
+            iframe.src = `${invidiousInstance}/embed/${videoId}`;
+        }
+
+        // Handle form submission
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const url = input.value;
+            const videoId = getVideoId(url);
+
+            if (videoId) {
+                updatePlayer(videoId);
+            } else {
+                alert('Invalid YouTube URL. Please try again.');
+            }
+        });
+    </script>
+
+</body>
+</html>
