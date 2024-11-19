@@ -3,79 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ad-Free YouTube Player</title>
+    <title>YouTube Video Player</title>
     <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            background-color: #f0f0f0;
-            font-family: Arial, sans-serif;
+        #video-container {
+            width: 640px;
+            height: 360px;
+            position: relative;
         }
-        iframe {
-            border: none;
-            width: 80%;
-            max-width: 800px;
-            height: 450px;
-            margin-top: 20px;
-        }
-        input {
+        #play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
             padding: 10px;
-            width: 80%;
-            max-width: 600px;
-            margin-top: 20px;
-            font-size: 16px;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
+            font-size: 18px;
             cursor: pointer;
+            border: none;
         }
     </style>
 </head>
 <body>
 
-    <h1>Ad-Free YouTube Player</h1>
-    <form id="video-form">
-        <input type="text" id="youtube-url" placeholder="Paste YouTube link here" required>
-        <button type="submit">Play Video</button>
-    </form>
+<div id="video-container">
+    <button id="play-button">Play Video</button>
+    <iframe id="youtube-player" width="640" height="360" 
+        src="https://www.youtube.com/embed/lC-qpWlDBFU?enablejsapi=1" 
+        frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen></iframe>
+</div>
 
-    <iframe id="video-player" allowfullscreen></iframe>
+<script>
+    const playButton = document.getElementById('play-button');
+    const youtubePlayer = document.getElementById('youtube-player');
 
-    <script>
-        const form = document.getElementById('video-form');
-        const input = document.getElementById('youtube-url');
-        const iframe = document.getElementById('video-player');
-
-        // Function to extract YouTube video ID from the URL
-        function getVideoId(url) {
-            const regex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:watch\?v=|embed\/|v\/|.+\?v=)|youtu\.be\/)([^&?/\s]+)/;
-            const matches = url.match(regex);
-            return matches ? matches[1] : null;
-        }
-
-        // Function to update the player with the given video ID
-        function updatePlayer(videoId) {
-            const invidiousInstance = 'https://invidious.snopyta.org'; // Replace with a working Invidious instance
-            iframe.src = `${invidiousInstance}/embed/${videoId}`;
-        }
-
-        // Handle form submission
-        form.addEventListener('submit', (event) => {
-            event.preventDefault();
-            const url = input.value;
-            const videoId = getVideoId(url);
-
-            if (videoId) {
-                updatePlayer(videoId);
-            } else {
-                alert('Invalid YouTube URL. Please try again.');
-            }
-        });
-    </script>
+    playButton.addEventListener('click', () => {
+        // Start playing the video and hide the play button
+        youtubePlayer.src += "&autoplay=1";  // Add autoplay to the iframe URL
+        playButton.style.display = 'none';   // Hide the play button
+    });
+</script>
 
 </body>
 </html>
