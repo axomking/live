@@ -50,7 +50,7 @@
         const input = document.getElementById('youtube-url');
         const iframe = document.getElementById('video-player');
 
-        // Function to extract YouTube video ID
+        // Function to extract YouTube video ID from the URL
         function getVideoId(url) {
             const regex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:watch\?v=|embed\/|v\/|.+\?v=)|youtu\.be\/)([^&?/\s]+)/;
             const matches = url.match(regex);
@@ -59,7 +59,7 @@
 
         // Function to update the player with the given video ID
         function updatePlayer(videoId) {
-            const invidiousInstance = 'https://inv.riverside.rocks'; // Choose a reliable Invidious instance
+            const invidiousInstance = 'https://invidious.snopyta.org'; // Replace with a working Invidious instance
             iframe.src = `${invidiousInstance}/embed/${videoId}`;
         }
 
