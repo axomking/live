@@ -1,28 +1,23 @@
-<iframe src="https://www.jiosaavn.com/embed/playlist/1224127175" width="250" height="360" frameborder="0" allowfullscreen></iframe>
-<iframe src="https://www.jiosaavn.com/embed/playlist/1224127175" width="250" height="360" frameborder="0" allowfullscreen></iframe>
-<iframe src="https://www.jiosaavn.com/embed/playlist/1224127175" width="250" height="360" frameborder="0" allowfullscreen></iframe>
-<iframe src="https://www.jiosaavn.com/embed/playlist/1224127175" width="250" height="360" frameborder="0" allowfullscreen></iframe>
-<iframe src="https://www.jiosaavn.com/embed/playlist/1224127175" width="250" height="360" frameborder="0" allowfullscreen></iframe>
-<iframe src="https://www.jiosaavn.com/embed/playlist/1224127175" width="250" height="360" frameborder="0" allowfullscreen></iframe>
-<iframe src="https://www.jiosaavn.com/embed/playlist/1224127175" width="250" height="360" frameborder="0" allowfullscreen></iframe>
-<iframe src="https://www.jiosaavn.com/embed/playlist/1224127175" width="250" height="360" frameborder="0" allowfullscreen></iframe>
-<iframe src="https://www.jiosaavn.com/embed/playlist/1224127175" width="250" height="360" frameborder="0" allowfullscreen></iframe>
-<iframe src="https://www.jiosaavn.com/embed/playlist/1224127175" width="250" height="360" frameborder="0" allowfullscreen></iframe>
-<iframe src="https://www.jiosaavn.com/embed/playlist/1224127175" width="250" height="360" frameborder="0" allowfullscreen></iframe>
-<iframe src="https://www.jiosaavn.com/embed/playlist/1224127175" width="250" height="360" frameborder="0" allowfullscreen></iframe>
-<iframe src="https://www.jiosaavn.com/embed/playlist/1224127175" width="250" height="360" frameborder="0" allowfullscreen></iframe>
-<iframe src="https://www.jiosaavn.com/embed/playlist/1224127175" width="250" height="360" frameborder="0" allowfullscreen></iframe>
-<iframe src="https://www.jiosaavn.com/embed/playlist/1224127175" width="250" height="360" frameborder="0" allowfullscreen></iframe>
-<iframe src="https://www.jiosaavn.com/embed/playlist/1224127175" width="250" height="360" frameborder="0" allowfullscreen></iframe>
-<iframe src="https://www.jiosaavn.com/embed/playlist/1224127175" width="250" height="360" frameborder="0" allowfullscreen></iframe>
-<iframe src="https://www.jiosaavn.com/embed/playlist/1224127175" width="250" height="360" frameborder="0" allowfullscreen></iframe>
-<iframe src="https://www.jiosaavn.com/embed/playlist/1224127175" width="250" height="360" frameborder="0" allowfullscreen></iframe>
-<iframe src="https://www.jiosaavn.com/embed/playlist/1224127175" width="250" height="360" frameborder="0" allowfullscreen></iframe>
-<iframe src="https://www.jiosaavn.com/embed/playlist/1224127175" width="250" height="360" frameborder="0" allowfullscreen></iframe>
-<iframe src="https://www.jiosaavn.com/embed/playlist/1224127175" width="250" height="360" frameborder="0" allowfullscreen></iframe>
-<iframe src="https://www.jiosaavn.com/embed/playlist/1224127175" width="250" height="360" frameborder="0" allowfullscreen></iframe>
-<iframe src="https://www.jiosaavn.com/embed/playlist/1224127175" width="250" height="360" frameborder="0" allowfullscreen></iframe>
-<iframe src="https://www.jiosaavn.com/embed/playlist/1224127175" width="250" height="360" frameborder="0" allowfullscreen></iframe>
-<iframe src="https://www.jiosaavn.com/embed/playlist/1224127175" width="250" height="360" frameborder="0" allowfullscreen></iframe>
-<iframe src="https://www.jiosaavn.com/embed/playlist/1224127175" width="250" height="360" frameborder="0" allowfullscreen></iframe>
-<iframe src="https://www.jiosaavn.com/embed/playlist/1224127175" width="250" height="360" frameborder="0" allowfullscreen></iframe>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JioSaavn Embedded Audio Player</title>
+</head>
+<body>
+    <!-- एम्बेडेड JioSaavn प्लेलिस्ट -->
+    <iframe id="audioPlayer" src="https://www.jiosaavn.com/embed/playlist/1224127175" width="250" height="360" frameborder="0" allowfullscreen></iframe>
+
+    <script>
+        // JioSaavn iframe को प्ले करने के लिए इसे हर बार रीलोड करें
+        var audioPlayer = document.getElementById('audioPlayer');
+
+        function replayAudio() {
+            // iframe को रीसेट करें ताकि यह फिर से लोड और प्ले हो जाए
+            audioPlayer.src = audioPlayer.src;
+        }
+
+        // हर 5 मिनट बाद ऑडियो को रीप्ले करें (समय समायोजित करें)
+        setInterval(replayAudio, 300000); // 300000 ms = 5 minutes (आप इसे अपनी आवश्यकता अनुसार बदल सकते हैं)
+    </script>
+</body>
+</html>
