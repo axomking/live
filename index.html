@@ -11,38 +11,56 @@
             position: relative;
         }
         #play-button {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
+            margin-top: 10px;
             padding: 10px;
-            font-size: 18px;
+            font-size: 16px;
             cursor: pointer;
-            border: none;
+        }
+        #input-container {
+            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
 
+<!-- Input Field and Button to Add YouTube Link -->
+<div id="input-container">
+    <input type="text" id="youtube-link" placeholder="Enter YouTube URL" style="width: 400px; padding: 10px;">
+    <button id="load-video" class="play-button">Load Video</button>
+</div>
+
+<!-- Video Container -->
 <div id="video-container">
-    <button id="play-button">Play Video</button>
     <iframe id="youtube-player" width="640" height="360" 
-        src="https://www.youtube.com/embed/lC-qpWlDBFU?enablejsapi=1" 
         frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
         allowfullscreen></iframe>
 </div>
 
 <script>
-    const playButton = document.getElementById('play-button');
+    const loadVideoButton = document.getElementById('load-video');
+    const youtubeLinkInput = document.getElementById('youtube-link');
     const youtubePlayer = document.getElementById('youtube-player');
 
-    playButton.addEventListener('click', () => {
-        // Start playing the video and hide the play button
-        youtubePlayer.src += "&autoplay=1";  // Add autoplay to the iframe URL
-        playButton.style.display = 'none';   // Hide the play button
+    loadVideoButton.addEventListener('click', () => {
+        const videoUrl = youtubeLinkInput.value;
+
+        // Extract video ID from the URL
+        const videoId = extractVideoId(videoUrl);
+
+        if (videoId) {
+            // Set the new video ID in the iframe src
+            youtubePlayer.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+        } else {
+            alert('Please enter a valid YouTube URL.');
+        }
     });
+
+    // Function to extract video ID from YouTube URL
+    function extractVideoId(url) {
+        const regex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+        const matches = url.match(regex);
+        return matches ? matches[1] : null;
+    }
 </script>
 
 </body>
