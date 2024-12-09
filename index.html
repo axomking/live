@@ -1,67 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YouTube Video Player</title>
-    <style>
-        #video-container {
-            width: 640px;
-            height: 360px;
-            position: relative;
-        }
-        #play-button {
-            margin-top: 10px;
-            padding: 10px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-        #input-container {
-            margin-bottom: 20px;
-        }
-    </style>
-</head>
-<body>
-
-<!-- Input Field and Button to Add YouTube Link -->
-<div id="input-container">
-    <input type="text" id="youtube-link" placeholder="Enter YouTube URL" style="width: 400px; padding: 10px;">
-    <button id="load-video" class="play-button">Load Video</button>
-</div>
-
-<!-- Video Container -->
-<div id="video-container">
-    <iframe id="youtube-player" width="640" height="360" 
-        frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
-        allowfullscreen></iframe>
-</div>
-
-<script>
-    const loadVideoButton = document.getElementById('load-video');
-    const youtubeLinkInput = document.getElementById('youtube-link');
-    const youtubePlayer = document.getElementById('youtube-player');
-
-    loadVideoButton.addEventListener('click', () => {
-        const videoUrl = youtubeLinkInput.value;
-
-        // Extract video ID from the URL
-        const videoId = extractVideoId(videoUrl);
-
-        if (videoId) {
-            // Set the new video ID in the iframe src with ad minimization parameters
-            youtubePlayer.src = `https://www.youtube.com/embed/${videoId}`;
-        } else {
-            alert('Please enter a valid YouTube URL.');
-        }
-    });
-
-    // Function to extract video ID from YouTube URL
-    function extractVideoId(url) {
-        const regex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
-        const matches = url.match(regex);
-        return matches ? matches[1] : null;
-    }
-</script>
-
-</body>
-</html>
+<iframe 
+    src="https://www.jiosaavn.com/embed/playlist/1224127175" 
+    width="300" 
+    height="380" 
+    frameborder="0" 
+    allowfullscreen 
+    allow="autoplay">
+</iframe>
